@@ -1,0 +1,406 @@
+1. Give the output of the following program. Assuming all the desired header files are already included, which are required to run the code.
+
+struct Pixel
+{
+            int C, R;
+};
+
+void Display(Pixel P)
+{
+            cout << "Col "<< P.C << " Row " << P.R << endl;
+}
+
+int main()
+{
+            Pixel X = {40,50}, Y, Z;
+            Z = X;
+            X.C += 10;
+            Y = Z;
+            Y.C += 10;
+            Y.R += 20;
+            Z.C -= 15;
+            Display(X);
+            Display(Y);
+            Display(Z);
+            return 0;
+}
+
+ANS:
+
+#include<iostream>
+using name space std;
+
+output:
+Col 50 Row 50
+Col 50 Row 70
+Col 25 Row 50
+
+_____________________________________________________________________________________________________
+2. Find the output of the following program. Assuming all the desired header files are already included, which are required to run the code.
+struct Play
+{
+            int score, bonus;
+};
+
+void calculate(Play &P, int N = 10)
+{
+            P.score++;
+            P.bonus += N;
+}
+int main()
+{
+            Play PL = {10, 15};
+            calculate(PL, 5);
+            cout << PL.score << ":" << PL.bonus << endl;
+            calculate(PL);
+            cout << PL.score << ":" << PL.bonus << endl;
+            calculate(PL, 15);
+            cout << PL.score << ":" << PL.bonus << endl;
+            return 0;
+}
+
+
+ANS:
+----------------------------------------
+#include<iostream>
+using namespace std;
+
+struct Play
+{
+            int score, bonus;
+};
+
+void calculate(Play &P, int N = 10)
+{
+            P.score++;
+            P.bonus += N;
+}
+int main()
+{
+            Play PL = {10, 15};
+            calculate(PL, 5);
+            cout << PL.score << ":" << PL.bonus << endl;
+            calculate(PL);
+            cout << PL.score << ":" << PL.bonus << endl;
+            calculate(PL, 15);
+            cout << PL.score << ":" << PL.bonus << endl;
+            return 0;
+}
+
+-------------------------------------------
+OUTPUT:
+
+11:20
+12:30
+13:45
+_______________________________________________________________________
+
+3. Find the output of the following program. Assuming all the desired header files are already included, which are required to run the code.
+
+struct MyBox
+{
+            int length, breadth, height;
+};
+
+void dimension (MyBox M)
+{
+            cout << M.length << "x" << M.breadth << "x";
+            cout << M.height << endl;
+}
+
+int main ()
+{
+            MyBox B1 = {10, 15, 5}, B2, B3;
+            ++B1.height;
+            dimension(B1);
+            B3 = B1;
+            ++B3.length;
+            B3.breadth++;
+            dimension(B3);
+            B2 = B3;
+            B2.height += 5;
+            B2.length--;
+            dimension(B2);
+           return 0;
+}
+-----------------------------------------------------------------
+ANS:
+
+#include<iostream>
+using namespace std;
+
+
+struct MyBox
+{
+            int length, breadth, height;
+};
+
+void dimension (MyBox M)
+{
+            cout << M.length << "x" << M.breadth << "x";
+            cout << M.height << endl;
+}
+
+int main ()
+{
+            MyBox B1 = {10, 15, 5}, B2, B3;
+            ++B1.height;
+            dimension(B1);
+            B3 = B1;
+            ++B3.length;
+            B3.breadth++;
+            dimension(B3);
+            B2 = B3;
+            B2.height += 5;
+            B2.length--;
+            dimension(B2);
+           return 0;
+}
+-----------------------------------------------------------------------
+OUTPUT:
+
+10x15x6
+11x16x6
+10x16x11
+
+
+______________________________________________________________________________________
+
+4. Rewrite the following program after removing the syntactical errors (if any). Underline each correction.
+
+struct Pixels
+{
+            int color, style;
+}
+void showPoint(Pixels P)
+{
+            cout << P.color, P.style << endl;
+}
+int main()
+{
+            Pixels Point1 = (5, 3);
+            showPoint(Point1);
+            Pixels Point2 = Point1;
+            color.Point1 += 2;
+            showPoint(Point2);
+            return 0;
+}
+
+ANS:
+#include<iostream>   //headerfile
+using namespace std; //cout,cin data
+
+struct Pixels
+{
+    int color, style;
+};//semiclon
+void showPoint(Pixels P)
+{
+    cout <<P.color<<P.style << endl;
+}
+int main()
+{
+    Pixels Point1 ={5, 3};//paranthesis
+    showPoint(Point1);
+    Pixels Point2 = Point1;
+    Point1.color += 2;//color
+    showPoint(Point2);
+    return 0;
+}
+
+In above program comments given placed beside the error
+________________________________________________________________________________________________
+5. Declare a structure to represent a complex number (a number having a real part and imaginary part). Write C++ functions to add, subtract, multiply and divide two complex numbers.
+
+ANS:
+
+#include<iostream>
+using namespace std;
+
+struct complexNumber{
+    private:
+     float real;
+     float img;
+    public:
+     void acceptData();
+     void addData();
+     void subData();
+     void divData();
+     
+}s1,s2;
+void complexNumber::acceptData(){
+    cout<<"enter first number:";
+    cin>>s1.real;
+    cout<<"enter first imginary number:";
+    cin>>s1.img;
+    cout<<"enter second number:";
+    cin>>s2.real;
+    cout<<"enter second imginary number:";
+    cin>>s2.img;
+}
+void complexNumber::addData(){
+    float a,b;
+    a=(s1.real)+(s2.real);
+    b=(s1.img)+(s2.img);
+    cout<<"Additon will be:"<<a<<"+"<<b<<"i"<<endl;
+}
+void complexNumber::subData(){
+    float a,b;
+    a=(s1.real)-(s2.real);
+    b=(s1.img)-(s2.img);
+    cout<<"subtraction will be:"<<a<<"+"<<b<<"i"<<endl;
+}
+void complexNumber::divData(){
+    float a,b;
+    a=(s1.real)/(s2.real);
+    b=(s1.img)/(s2.img);
+    cout<<"Divide will be:"<<a<<"+"<<b<<"i"<<endl;
+}
+int main(){
+    complexNumber c1;
+    c1.acceptData();
+    c1.addData();
+    c1.subData();
+    c1.divData();
+    return 0;
+}
+
+OUTPUT:
+
+PS C:\All_Workspace\CPP_Workspace\c++Assignment> g++ Ass5.cpp -o Ass5.exe
+PS C:\All_Workspace\CPP_Workspace\c++Assignment> ./Ass5
+enter first number:2
+enter first imginary number:3.5
+enter second number:5.6
+enter second imginary number:5
+Additon will be:7.6+8.5i      
+subtraction will be:-3.6+-1.5i
+Divide will be:0.357143+0.7i
+________________________________________________________________________________________________________
+6. An array stores details of 25 students (rollno, name, marks in three subject). Write a program to create such an array and print out a list of students who have failed in more than one subject.
+
+ANS:
+
+#include<iostream>
+using namespace std;
+
+struct Student
+{
+
+    int roll_No;
+    string name;
+    int m1,m2,m3;
+};
+typedef Student s;
+
+int main(){
+    s Student [5];
+    for(int i=0;i<5;i++){
+        cout<<"enter roll no:";
+        cin>>Student[i].roll_No;
+        cout<<"enter student name:";
+        cin>>Student[i].name;
+        cout<<"enter three subjects marks:";
+        cin>>Student[i].m1>>Student[i].m2>>Student[i].m3;
+
+    }
+    cout<<"students failed in more than one subject:";
+    for(int i=0;i<5;i++){
+        if((Student[i].m1<35 && Student[i].m2<35)||(Student[i].m2<35 && Student[i].m3<35)||(Student[i].m3<35 && Student[i].m1<35)){
+          cout<<Student[i].roll_No<<"\t"<<Student[i].name;  
+        }
+    
+    return 0;
+    }
+}
+
+
+OUTPUT:
+PS C:\All_Workspace\CPP_Workspace\c++Assignment> g++ Ass61.cpp -o Ass61.exe
+PS C:\All_Workspace\CPP_Workspace\c++Assignment> ./Ass61
+enter roll no:1
+enter student name:ram
+enter three subjects marks:34
+35
+23
+enter roll no:2
+enter student name:queen
+enter three subjects marks:67
+67
+67
+enter roll no:3
+enter student name:yo
+enter three subjects marks:34
+33
+55
+enter roll no:4
+enter student name:kiki
+enter three subjects marks:44
+44
+44
+enter roll no:5
+enter student name:jiji
+enter three subjects marks:55
+45
+45
+students failed in more than one subject:1 ram
+____________________________________________________________________________________________________________
+7. What should be output of below program? program is compiled on g++ compiler.
+#include<iostream>
+using namespace std;
+struct student{	
+ char a;  char b;  int c;
+};
+int main()
+{
+ cout<<sizeof(student);	
+ return 0;
+}
+Options:
+(A) 4
+(B) 6
+(C) 8
+(D) 12
+------------------------
+Answer: c
+______________________________________________________________________________________________________________________
+8. Which of the following statements assigns a value to the hourlyWage member of employee[2}?
+Options:
+(A) employee[2]->hourlyWage = 50.00;
+(B) employee2.hourlyWage = 7.50;
+(C) hourlyWage[2].employee = 29.75;
+(D) employee[2].hourlyWage = 75.00;
+-----------------------------------------------
+ANS:D
+______________________________________________________________________________________________________________________
+9. Which of the following statements outputs the value of the gpa member of element 1 of the student array?
+Options:
+(A) cout<<student1.gpa;
+(B) cout<<firstStudent.gpa;
+(C) cout<<student[1].gpa;
+(D) cout<<student1 ->gpa;
+------------------------------------
+Answer:D
+____________________________________________________________________________________________________________________
+10. Which of the following statements outputs the value of the gpa member of element 1 of the student array?
+Options: 
+(A) cout<<student1.gpa;
+(B) cout<<firstStudent.gpa;
+(C) cout<<student[1].gpa;
+(D) cout<<student1 ->gpa;
+------------------------------
+Answer:C
+
+________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
